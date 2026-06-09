@@ -5,7 +5,7 @@
  *   2. /api/script — user picks concept → script → panels (all in one)
  */
 
-const API_BASE = '';
+const API_BASE = import.meta.env.VITE_API_BASE || '';
 
 async function apiCall(endpoint, body) {
   const response = await fetch(`${API_BASE}${endpoint}`, {
