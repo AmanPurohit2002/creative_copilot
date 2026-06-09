@@ -1,0 +1,110 @@
+/* ─── Loading State ─────────────────────────────────────────────────────── */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-xl);
+  animation: fadeIn 0.3s ease;
+}
+
+.loading-state__spinner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-bottom: var(--space-xl);
+}
+
+.loading-state__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent-coral);
+  animation: spin 1.2s linear infinite;
+}
+
+.loading-state__ring--2 {
+  inset: 6px;
+  border-top-color: var(--accent-pink);
+  animation-duration: 1.8s;
+  animation-direction: reverse;
+}
+
+.loading-state__ring--3 {
+  inset: 12px;
+  border-top-color: var(--accent-purple);
+  animation-duration: 2.4s;
+}
+
+.loading-state__message {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.loading-state__submessage {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.loading-state__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.loading-state__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-coral);
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.loading-state__dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-state__dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* ─── Skeleton Cards ───────────────────────────────────────────────────── */
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  width: 100%;
+}
+
+.skeleton-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  margin-bottom: var(--space-md);
+  width: 100%;
+}
+
+.skeleton-line--title {
+  height: 16px;
+  width: 60% !important;
+  margin-bottom: var(--space-lg);
+}

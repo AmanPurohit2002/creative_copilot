@@ -1,0 +1,175 @@
+<mxfile host="Electron" modified="2026-06-09T00:00:00.000Z" agent="Mozilla/5.0" version="21.6.5" type="device">
+  <diagram id="creative-copilot-lld" name="LLD">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Nodes -->
+        <mxCell id="frontend" value="&lt;b&gt;React Frontend&lt;/b&gt;&lt;br&gt;Wizard UI &amp;amp; PDF Export&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;App.jsx &amp;amp; api.js&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="backend" value="&lt;b&gt;FastAPI Backend&lt;/b&gt;&lt;br&gt;/api/brief, /api/script&lt;br&gt;&amp;amp; /export-pdf&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;routes/creative.py&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="260" y="280" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pdf_gen" value="&lt;b&gt;PDF Generator&lt;/b&gt;&lt;br&gt;ReportLab&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;pdf_generator.py&lt;/i&gt;&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="graph" value="&lt;b&gt;LangGraph Orchestrator&lt;/b&gt;&lt;br&gt;StateGraph (CreativeState)&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;services/graph.py&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="480" y="280" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="redis" value="&lt;b&gt;Redis Checkpointer&lt;/b&gt;&lt;br&gt;State Persistence&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;docker-compose.yml&lt;/i&gt;&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="500" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="llm" value="&lt;b&gt;Groq API&lt;/b&gt;&lt;br&gt;Llama-3 (JSON Instructor)&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;services/llm.py&lt;/i&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="940" y="280" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Agents -->
+        <mxCell id="cd" value="&lt;b&gt;1. Creative Director&lt;/b&gt;&lt;br&gt;Generates Brief&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;graph.py &amp;amp; prompts.py&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="100" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="brainstormer" value="&lt;b&gt;2. Brainstormer&lt;/b&gt;&lt;br&gt;Generates Concepts&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;graph.py &amp;amp; prompts.py&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="200" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="reviewer" value="&lt;b&gt;3. Reviewer&lt;/b&gt;&lt;br&gt;Evaluates &amp;amp; Critiques&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;graph.py &amp;amp; prompts.py&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="300" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="screenwriter" value="&lt;b&gt;4. Screenwriter&lt;/b&gt;&lt;br&gt;Shot-by-Shot Script&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;graph.py &amp;amp; prompts.py&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="storyboard" value="&lt;b&gt;5. Storyboard Artist&lt;/b&gt;&lt;br&gt;Image Prompts &amp;amp; Panels&lt;br&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;&lt;i&gt;graph.py &amp;amp; imagen.py&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="540" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="frontend" target="backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="backend" target="graph">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="graph" target="redis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_pdf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="backend" target="pdf_gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Edges from Orchestrator to Agents -->
+        <mxCell id="edge4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="graph" target="cd">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="300" />
+              <mxPoint x="680" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="graph" target="brainstormer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="320" />
+              <mxPoint x="660" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="graph" target="reviewer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="320" />
+              <mxPoint x="640" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="graph" target="screenwriter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="340" />
+              <mxPoint x="660" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="graph" target="storyboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="340" />
+              <mxPoint x="680" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Edges from Agents to LLM -->
+        <mxCell id="edge9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;startArrow=classic;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="cd" target="llm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1010" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;startArrow=classic;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="brainstormer" target="llm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="230" />
+              <mxPoint x="900" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;startArrow=classic;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="reviewer" target="llm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;startArrow=classic;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="screenwriter" target="llm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="470" />
+              <mxPoint x="900" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;startArrow=classic;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="storyboard" target="llm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1010" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Reflection Loop & Human Interrupt Labels -->
+        <mxCell id="reflection" value="Reflection Loop (Max 3 Revisions)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;startArrow=classic;startFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="brainstormer" target="reviewer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="280" />
+              <mxPoint x="760" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="interrupt" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;Human-in-the-Loop (Interrupt)&lt;/b&gt;&lt;/font&gt;&lt;br&gt;User selects concept" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="680" y="380" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lineInterrupt" style="edgeStyle=none;rounded=0;html=1;dashed=1;strokeColor=#ff0000;strokeWidth=2;endArrow=none;endFill=0;" edge="1" parent="1" source="interrupt">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="400" as="targetPoint" />
+            <mxPoint x="920" y="400" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="920" y="400" />
+              <mxPoint x="680" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

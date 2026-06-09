@@ -1,0 +1,199 @@
+/* ─── Idea Input ───────────────────────────────────────────────────────── */
+.idea-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+  padding: var(--space-xl);
+  animation: fadeSlideUp 0.6s ease;
+}
+
+.idea-input__hero {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  max-width: 680px;
+}
+
+.idea-input__badge {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-lg);
+  background: var(--bg-glass);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.03em;
+}
+
+.idea-input__title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.03em;
+}
+
+.idea-input__gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.idea-input__subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Input area */
+.idea-input__form {
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: var(--space-2xl);
+}
+
+.idea-input__input-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.idea-input__input-wrapper:focus-within {
+  border-color: var(--accent-coral);
+  box-shadow: var(--shadow-glow), 0 0 0 1px rgba(249, 115, 22, 0.1);
+}
+
+.idea-input__textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  padding: var(--space-sm);
+}
+
+.idea-input__textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.idea-input__submit {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-xl);
+  background: var(--accent-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.idea-input__submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+}
+
+.idea-input__submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.idea-input__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.idea-input__arrow {
+  transition: transform var(--transition-fast);
+}
+
+.idea-input__submit:hover .idea-input__arrow {
+  transform: translateX(3px);
+}
+
+.idea-input__spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Example chips */
+.idea-input__examples {
+  max-width: 640px;
+  text-align: center;
+}
+
+.idea-input__examples-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.idea-input__examples-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.idea-input__example-chip {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: var(--font-body);
+}
+
+.idea-input__example-chip:hover:not(:disabled) {
+  border-color: var(--accent-coral);
+  color: var(--text-primary);
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.idea-input__example-chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .idea-input__title {
+    font-size: 2rem;
+  }
+
+  .idea-input__subtitle {
+    font-size: 0.95rem;
+  }
+}

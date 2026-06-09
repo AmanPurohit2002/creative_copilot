@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+*.pyo
+.git
+*.md
+.env
+.env.*
+frontend
+Scripts
+Lib
