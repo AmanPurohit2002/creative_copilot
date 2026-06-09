@@ -28,13 +28,16 @@ async def lifespan(app: FastAPI):
         print("[WARN] GROQ_API_KEY is not set in .env")
         print("   Creative Copilot will not work without it.")
 
-    # Setup LangGraph checkpointer Redis indices
+    # Setup LangGraph checkpointer Redis indices (only for Redis-backed checkpointers)
     try:
         from backend.services.graph import checkpointer
-        await checkpointer.setup()
-        print("[OK] LangGraph checkpointer indices created in Redis")
+        if hasattr(checkpointer, 'setup'):
+            await checkpointer.setup()
+            print("[OK] LangGraph checkpointer indices created in Redis")
+        else:
+            print("[OK] Using in-memory checkpointer (no setup needed)")
     except Exception as e:
-        print(f"[ERROR] Failed to setup LangGraph checkpointer: {e}")
+        print(f"[WARN] Checkpointer setup skipped: {e}")
 
     yield
     # Shutdown
