@@ -1,5 +1,7 @@
 # Creative Copilot 🎬🤖
 
+**🚀 Live Demo:** [https://creative-copilot-one.vercel.app/](https://creative-copilot-one.vercel.app/)
+
 An Agentic Multi-Agent workflow built with **LangGraph**, **FastAPI**, **React**, and **Groq**, designed to transform a one-line ad idea into a fully annotated, shot-by-shot storyboard with AI-generated image panels.
 
 ## 🌟 Features
