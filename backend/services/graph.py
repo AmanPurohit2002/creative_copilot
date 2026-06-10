@@ -193,13 +193,25 @@ async def storyboard_artist(state: CreativeState) -> CreativeState:
 redis_url = os.environ.get("REDIS_URL", "redis://redis:6379/0")
 
 # Use MemorySaver on Render (Redis Key-Value there lacks RediSearch)
+# Also fall back to MemorySaver if Redis Stack (with RedisJSON) is not available
 if os.environ.get("RENDER"):
     from langgraph.checkpoint.memory import MemorySaver
     checkpointer = MemorySaver()
     print("[Checkpointer] Render environment detected — using MemorySaver")
 else:
-    checkpointer = AsyncRedisSaver(redis_url=redis_url)
-    print("[Checkpointer] Local/Standard environment — using AsyncRedisSaver")
+    try:
+        import redis as _redis_lib
+        _test_conn = _redis_lib.Redis.from_url(redis_url, decode_responses=True)
+        # Verify that Redis Stack modules (RedisJSON) are available
+        _test_conn.execute_command("JSON.SET", "__checkpointer_test__", "$", '{"ok":true}')
+        _test_conn.delete("__checkpointer_test__")
+        _test_conn.close()
+        checkpointer = AsyncRedisSaver(redis_url=redis_url)
+        print("[Checkpointer] Redis Stack detected — using AsyncRedisSaver")
+    except Exception as e:
+        from langgraph.checkpoint.memory import MemorySaver
+        checkpointer = MemorySaver()
+        print(f"[Checkpointer] Redis Stack not available ({e}) — falling back to MemorySaver")
 
 builder = StateGraph(CreativeState)
 
